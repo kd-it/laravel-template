@@ -38,7 +38,7 @@ test_in_docker: up
 
 python-init:
 	which pipenv || pip install pipenv --break-system-packages
-	pipenv install
+	pipenv install --dev
 
 doc: python-init
 	pipenv run make -C doc html
