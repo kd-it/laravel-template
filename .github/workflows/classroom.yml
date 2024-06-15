@@ -23,11 +23,8 @@ jobs:
         max-score: 1
         timeout: 2
     - name: modify permission
-      if: ${{ env.GITHUB_ACTIONS }} == "true"
+      if: ${{ env.GITHUB_ACTIONS && env.GITHUB_ACTIONS == "true" }}
       run: |
-        export | grep GITHUB
-        echo "==="
-        ls -ld public
         chmod -v 777 public
 
     - name: webaccess
