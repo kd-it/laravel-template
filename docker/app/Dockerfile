@@ -26,6 +26,9 @@ RUN addgroup -g $USER_GID $USERNAME \
     && adduser -u $USER_UID -G $USERNAME -s /bin/sh -D $USERNAME
 # $USERNAMEにはsudo権限を付与
 RUN echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USERNAME
+# composerのラッパーをインストール
+COPY composer /usr/local/bin/composer
+RUN chmod 755 /usr/local/bin/composer
 USER ${USERNAME}
 ENV PATH="/home/${USERNAME}/.composer/vendor/bin:/home/${USERNAME}/.local/bin:${PATH}"
 WORKDIR /app
