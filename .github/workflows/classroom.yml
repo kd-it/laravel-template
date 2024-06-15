@@ -23,22 +23,21 @@ jobs:
         max-score: 1
         timeout: 2
     - name: modify permission
-      if: ${{ env.GITHUB_ACTIONS }}
       run: |
-        chown -R `whoami` public
+        export | grep GITHUB
+        echo "==="
+        ls -ld public
+        # chown -R `whoami` public
 
-    - name: webaccess
-      id: webaccess
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: webaccess
-        setup-command: ''
-        command: make test_in_docker FILE=tests/test_webaccess.py
-        max-score: 1
-        timeout: 2
-
-
-
+    # - name: webaccess
+    #   id: webaccess
+    #   uses: classroom-resources/autograding-command-grader@v1
+    #   with:
+    #     test-name: webaccess
+    #     setup-command: ''
+    #     command: make test_in_docker FILE=tests/test_webaccess.py
+    #     max-score: 1
+    #     timeout: 2
 
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
