@@ -4,10 +4,11 @@ services:
     ports:
       - 80
     depends_on:
+      - app
       - db
       - selenium
-    volumes:
-      - ./:/workspaces
+
+  app:
 
   selenium:
     image: seleniarm/standalone-chromium
