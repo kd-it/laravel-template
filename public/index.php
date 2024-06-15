@@ -7,7 +7,7 @@
     <ul>
         <?php
         # このディレクトリにあるdb*.phpのリストを取得しリンクを生成する
-        foreach (glob('db*.php') as $file) {
+        foreach (glob('*.php') as $file) {
             echo "<li><a href='{$file}'>{$file}</a></li>";
         }
         ?>
