@@ -39,11 +39,10 @@ class TestCase(unittest.TestCase):
         self.driver.get("http://web/testcase.html")
         self.assertIn("This is a pen", self.driver.title)
 
-    # # ホストwebに接続し、タイトルを取得するテスト(PHP)
-    # def test_access_php(self):
-    #     self.driver.get("http://web/testcase.php")
-    #     self.assertIn("This is a pen", self.driver.title)
-
+    # ホストwebに接続し、タイトルを取得するテスト(PHP)
+    def test_access_php(self):
+        self.driver.get("http://web/testcase.php")
+        self.assertIn("This is a pen", self.driver.title)
 
 
 if __name__ == "__main__":
