@@ -22,6 +22,10 @@ jobs:
         command: make test_in_docker FILE=tests/test_connect.py
         max-score: 1
         timeout: 2
+    - name: modify permission
+      if: ${{ env.GITHUB_ACTIONS }}
+      run: |
+        chown -R `whoami` public
 
     - name: webaccess
       id: webaccess
