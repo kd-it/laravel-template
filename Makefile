@@ -28,11 +28,11 @@ clean:
 
 
 testall_in_docker: up
-	docker compose -p test exec -w /workspaces web make testall
+	docker compose -p test exec -w /app web make testall
 	make down
 
 test_in_docker: up
-	docker compose -p test exec -w /workspaces web make test FILE=$(FILE)
+	docker compose -p test exec -w /app web make test FILE=$(FILE)
 	make down
 
 
