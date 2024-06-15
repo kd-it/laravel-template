@@ -13,12 +13,16 @@ REMOTE_URL = "http://selenium:4444/wd/hub"
 
 class TestCase(unittest.TestCase):
     def setUp(self):
+        # カレントディレクトリを取得して表示
+        import os
+        print(os.getcwd())
+
         # selenium gridのサーバーに接続
         self.driver = webdriver.Remote(REMOTE_URL, options=webdriver.ChromeOptions())
         # テスト用のファイルを作成
-        with open("public/testcase.html", "w") as f:
+        with open("/app/public/testcase.html", "w") as f:
             f.write("<html><head><title>This is a pen</title></head><body></body></html>")
-        with open("public/testcase.php", "w") as f:
+        with open("/app/public/testcase.php", "w") as f:
             f.write("<html><head><title><?php echo 'This is a pen';?></title></head><body></body></html>")
 
     def tearDown(self):
