@@ -42,8 +42,13 @@
 				"oderwat.indent-rainbow",
 				"mechatroner.rainbow-csv",
 				"xdebug.php-debug",
-				"EditorConfig.EditorConfig"
-			]
+				"EditorConfig.EditorConfig",
+				"donjayamanne.python-environment-manager"
+			],
+			// pythonのインタプリタをpipenvによるものに設定
+			"settings": {
+				"python.pythonPath": "pipenv run python"
+			}
 		}
 	}
 }
