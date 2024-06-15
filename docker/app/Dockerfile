@@ -15,6 +15,8 @@ RUN apk add --no-cache \
 RUN apk add --no-cache \
     python3 \
     py3-pip
+RUN apk add --no-cache \
+    github-cli
 # RUN pecl install xdebug \
 #     && docker-php-ext-enable xdebug
 RUN docker-php-ext-install mysqli pdo_mysql
