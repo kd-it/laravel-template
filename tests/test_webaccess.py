@@ -16,6 +16,8 @@ class TestCase(unittest.TestCase):
         # カレントディレクトリを取得して表示
         import os
         print(os.getcwd())
+        # カレントディレクトリにあるpublicディレクトリのアクセス権を確認する
+        print(os.system("ls -l public"))
 
         # selenium gridのサーバーに接続
         self.driver = webdriver.Remote(REMOTE_URL, options=webdriver.ChromeOptions())
