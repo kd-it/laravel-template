@@ -16,7 +16,7 @@ RUN apk add --no-cache \
     python3 \
     py3-pip
 RUN apk add --no-cache \
-    github-cli
+    github-cli make sudo
 # RUN pecl install xdebug \
 #     && docker-php-ext-enable xdebug
 RUN docker-php-ext-install mysqli pdo_mysql
@@ -24,6 +24,8 @@ RUN docker-php-ext-install mysqli pdo_mysql
 # 作業用ユーザーの作成、シェルは/bin/sh
 RUN addgroup -g $USER_GID $USERNAME \
     && adduser -u $USER_UID -G $USERNAME -s /bin/sh -D $USERNAME
+# $USERNAMEにはsudo権限を付与
+RUN echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USERNAME
 USER ${USERNAME}
 ENV PATH="/home/${USERNAME}/.composer/vendor/bin:/home/${USERNAME}/.local/bin:${PATH}"
 WORKDIR /app
