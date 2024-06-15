@@ -3,9 +3,9 @@ all: testall
 LOCKFILE=/tmp/up.run
 PULL=missing
 
-testall:
+testall: python-init
 	for i in tests/*.py; do \
-	  python $$i; \
+	  pipenv run python $$i; \
 	done
 
 test: python-init
@@ -14,7 +14,7 @@ test: python-init
 up: $(LOCKFILE)
 
 down:
-	docker compose -p test down --rmi local
+	docker compose -p test down --rmi local -t 1
 	make clean
 
 $(LOCKFILE):
@@ -37,7 +37,7 @@ test_in_docker: up
 
 
 python-init:
-	which pipenv || pip install pipenv --break-system-packages
+	if ! which pipenv; then pip install pipenv --break-system-packages; fi
 	pipenv install --dev
 
 doc: python-init
